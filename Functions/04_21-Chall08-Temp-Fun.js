@@ -2,6 +2,7 @@ let toCelsius = function (fahrebheit) {
     let temp = (fahrebheit - 32)     * (5/9);
     return temp;
 }
+
 let toKelvin = function (fahrebheit) {
     let temp = (fahrebheit - 459.67) * (5/9);
     return temp;
