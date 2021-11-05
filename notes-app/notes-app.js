@@ -1,25 +1,43 @@
-const notes = getSavedNotes()
+let notes = getSavedNotes()
+
 
 const filters = {
-    searchText: ''
+    searchText: '',
+    sortBy: 'byEdited'
 }
 
 renderNotes(notes, filters)
 
-document.querySelector('#create-note').addEventListener('click', function (e) {
+// Add new note button Call
+document.querySelector('#create-note').addEventListener('click', function () {
+    const id = uuidv4()
     notes.push({
+        id: id,
         title: '',
-        body: ''
+        body: '',
+        createdAt: timpstamp,
+        updatedAt: timpstamp
     })
     saveNotes(notes)
+    location.assign(`/notes-app/edit.html#${id}`)
+})
+
+// Filtered by text Call
+document.querySelector('#search-text').addEventListener('input', function (event) {
+    filters.searchText = event.target.value
     renderNotes(notes, filters)
 })
 
-document.querySelector('#search-text').addEventListener('input', function (e) {
-    filters.searchText = e.target.value
+// Filtered by list Call
+document.querySelector('#sorted-by').addEventListener('change', function (event) {
+    filters.sortBy = event.target.value
     renderNotes(notes, filters)
 })
 
-document.querySelector('#filter-by').addEventListener('change', function (e) {
-    console.log(e.target.value)
+// refresh notes list while editing at same time
+window.addEventListener('storage', function (event) {
+    if (event.key === 'notes') {
+        notes = getSavedNotes()
+        renderNotes(notes, filters)
+    }
 })
