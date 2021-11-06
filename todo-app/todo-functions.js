@@ -1,62 +1,54 @@
+'use strict'
+
 // Fetch data saved at local storage if found
-const getSavedTodo = function () {
+const getSavedTodo = () => {
     const todosJSON = localStorage.getItem('todos')
-    if (todosJSON !== null) {
-        return JSON.parse(todosJSON)
-    } else {
+    try {
+        return todosJSON ? JSON.parse(todosJSON) : []
+    } catch (error) {
         return []
     }
 }
 
 // Save todos to local storage 
-const saveTodo = function (todos) {
+const saveTodo = (todos) => {
     localStorage.setItem('todos', JSON.stringify(todos))
 }
 
 // render the todo list
-const renderTasks = function (todos, filters) {
-    filteredTasks = todos.filter(function(todo) {
-        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
-    })
+const renderTasks = (todos, filters) => {
+    let filteredTasks = todos.filter((todo) => todo.text.toLowerCase().includes(filters.searchText.toLowerCase()))
 
-    filteredTasks = filteredTasks.filter(function(todo) {
-        return !filters.hideCompleted || !todo.completed
-    })
+    filteredTasks = filteredTasks.filter((todo) => !filters.hideCompleted || !todo.completed)
     
-    const incompletedTodos = filteredTasks.filter(function(todo) {
-        return !todo.completed
-    })
+    const incompletedTodos = filteredTasks.filter((todo) => !todo.complete)
 
     document.querySelector('#tasks').innerHTML = ""
     document.querySelector('#tasks').appendChild(generateSammaryDOM(incompletedTodos))
 
-    filteredTasks.forEach(function(todo) {
+    filteredTasks.forEach((todo) => {
         document.querySelector('#tasks').appendChild(generateTodoDOM(todo))
     })
 }
 
 // Remove some todos by (x) button
-const removeTodo = function (id) {
-    const todoIndex = todos.findIndex(function (todo) {
-        return id === todo.id
-    })
+const removeTodo = (id) => {
+    const todoIndex = todos.findIndex((todo) => id === todo.id)
     if (todoIndex > -1) {
         todos.splice(todoIndex, 1)
     }
 }
 
 // Change todo status by checkbox
-const toggleTodo = function (id) {
-    const todo = todos.find(function (todo) {
-        return todo.id === id
-    })
-    if (todo !== undefined) {
+const toggleTodo = (id) => {
+    const todo = todos.find((todo) => todo.id === id)
+    if (todo) {
         todo.completed = !todo.completed
     }
 }
 
 // Create the DOM structure of todo
-const generateTodoDOM = function (todo) {
+const generateTodoDOM = (todo) => {
     const todoEl    = document.createElement('div')
     let checkEl     = document.createElement('input')
     const textEl    = document.createElement('span')
@@ -69,7 +61,7 @@ const generateTodoDOM = function (todo) {
     todoEl.appendChild(checkEl)
     checkEl.checked = todo.completed
 
-    checkEl.addEventListener('change', function(){
+    checkEl.addEventListener('change', () => {
         toggleTodo(todo.id)
         saveTodo(todos)
         renderTasks(todos, filters)
@@ -83,7 +75,7 @@ const generateTodoDOM = function (todo) {
     // remove button setup
     removeBTN.textContent = 'x'
     todoEl.appendChild(removeBTN)
-    removeBTN.addEventListener('click', function () {
+    removeBTN.addEventListener('click', () => {
         removeTodo(todo.id)
         saveTodo(todos)
         renderTasks(todos, filters)
@@ -92,7 +84,7 @@ const generateTodoDOM = function (todo) {
 }
 
 // Create Sammary DOM 
-const generateSammaryDOM = function (incompletedTodos) {
+const generateSammaryDOM = (incompletedTodos) => {
     const summary = document.createElement('h2')
     summary.textContent = `You have ${incompletedTodos.length} tasks left`
     return summary

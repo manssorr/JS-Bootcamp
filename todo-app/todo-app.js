@@ -1,3 +1,5 @@
+'use strict'
+
 const todos = getSavedTodo()
 
 const filters = {
@@ -7,7 +9,7 @@ const filters = {
 
 renderTasks(todos, filters)
 
-document.querySelector('#text-task').addEventListener('input', function(event) {
+document.querySelector('#text-task').addEventListener('input', (event) => {
     console.log(event.target.value)
     filters.searchText  = event.target.value
     renderTasks(todos, filters)
@@ -15,7 +17,7 @@ document.querySelector('#text-task').addEventListener('input', function(event) {
 })
 
 // Add new note button Call
-document.querySelector('#add-todo').addEventListener('submit', function(event) {
+document.querySelector('#add-todo').addEventListener('submit', (event) => {
     event.preventDefault()
     todos.push({
         id: uuidv4(),
@@ -29,7 +31,7 @@ document.querySelector('#add-todo').addEventListener('submit', function(event) {
 })
 
 // Hide Complete Fiilter Call
-document.querySelector('#hide-complete').addEventListener('change', function(event) {
+document.querySelector('#hide-complete').addEventListener('change', (event) => {
     filters.hideCompleted = event.target.checked
     console.log(filters.hideCompleted)
     renderTasks(todos, filters)

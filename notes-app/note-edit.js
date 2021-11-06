@@ -1,18 +1,18 @@
+'use strict'
+
 const titleElement = document.querySelector('#note-title')
 const bodyElement  = document.querySelector('#note-body')
 const removeBTN    = document.querySelector('#remove-note')
 const noteId       = location.hash.substring(1)
 const lastEditText = document.querySelector('#last-edit');
-const backHome     = function () {location.assign('/notes-app/index.html')}
-const updateDate   = function (note) {note.updatedAt = timpstamp}
+const backHome     = () => {location.assign('/notes-app/index.html')}
+const updateDate   = (note) => {note.updatedAt = timpstamp}
 
 let notes         = getSavedNotes()
-let note          = notes.find(function (note) {
-    return note.id === noteId
-})
+let note          = notes.find((note) => note.id === noteId)
 
 // Check if the note is exist
-if (note === undefined) {
+if (!note) {
     backHome()
 } else {
     titleElement.value = note.title
@@ -21,13 +21,13 @@ if (note === undefined) {
 }
 
 // Change details of note Call
-document.querySelector('#note-title').addEventListener('input', function(event){
+document.querySelector('#note-title').addEventListener('input', (event) => {
     note.title = event.target.value
     updateDate(note)
     saveNotes(notes)
     lastEditText.textContent = generateLastEdited(note.updatedAt);
 })
-document.querySelector('#note-body').addEventListener('input', function(event){
+document.querySelector('#note-body').addEventListener('input', (event) => {
     note.body = event.target.value
     updateDate(note)
     saveNotes(notes)
@@ -35,22 +35,20 @@ document.querySelector('#note-body').addEventListener('input', function(event){
 })
 
 // Remove this note button setup
-removeBTN.addEventListener('click', function(event) {
+removeBTN.addEventListener('click', (event) => {
     removeNote(noteId)
     saveNotes(notes)
     backHome()
 })
 
 // Update the inputes all over pages
-window.addEventListener('storage', function(event) {
+window.addEventListener('storage', (event) => {
     if (event.key === 'notes'){
         notes        = getSavedNotes()
-        note         = notes.find(function (note) {
-            return note.id === noteId
-        })
+        note         = notes.find((note) => note.id === noteId)
         
         // Check if the note is exist
-        if (note === undefined) {
+        if (!note) {
             backHome()
         } else {
             titleElement.value = note.title
