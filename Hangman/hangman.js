@@ -8,18 +8,17 @@ const Hangman = function (word, remainingGuesses) {
     this.status = 'Playing'
 }
 
+// The status of the game!
 Hangman.prototype.updateStatus = function () {
-    let check = []
-    this.word.forEach((letter) => {
-        if (this.guessedLetters.includes(letter) || letter === ' ') {
-            check += letter
-        }
-    })
+    const finished = this.word.every(letter => this.guessedLetters.includes(letter))
+    const hasGuess = this.remainingGuesses > 0
 
-    if (this.remainingGuesses <= 0) {
+    if (!hasGuess && !finished) {
         this.status = 'You are FAILED!'
-    } else if (check.length === this.word.length) {
+    } else if (hasGuess && finished) {
         this.status = 'You are FINSISHED WOHO!'
+    } else {
+        this.status = 'Playing'
     }
 
 }
