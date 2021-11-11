@@ -1,7 +1,7 @@
 'use strict'
 const puzzleEl = document.querySelector('#puzzle')
 const guessesEl = document.querySelector('#guesses')
-let theGame = new Hangman('Cat', 2)
+let theGame = new Hangman('Lucy Cat', 2)
 
 
 //Start the game
