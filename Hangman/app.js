@@ -6,16 +6,16 @@ let theGame = new Hangman('Cat', 2)
 
 //Start the game
 const startNewGame = () => {
-    puzzleEl.textContent = theGame.getPuzzle()
-    guessesEl.textContent = theGame.getStatusMessage()
+    puzzleEl.textContent = theGame.puzzle
+    guessesEl.textContent = theGame.statusMessage
 }
 
 // listener to the user keyboard pressing
 window.addEventListener('keypress', function(event){
     const guess = String.fromCharCode(event.charCode)
     theGame.makeGuess(guess)
-    puzzleEl.textContent = theGame.getPuzzle()
-    guessesEl.textContent = theGame.getStatusMessage()
+    puzzleEl.textContent = theGame.puzzle
+    guessesEl.textContent = theGame.statusMessage
 })
 
 startNewGame()
