@@ -33,4 +33,4 @@ request.addEventListener('readystatechange', event => {
 
 startNewGame()
 request.open('GET', 'https://puzzle.mead.io/puzzle?wordCount=1')
-request.send()
+// request.send()
