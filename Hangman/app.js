@@ -18,19 +18,8 @@ window.addEventListener('keypress', function(event){
     guessesEl.textContent = theGame.statusMessage
 })
 
-// Listener for the API
-const request = new XMLHttpRequest()
-
-request.addEventListener('readystatechange', event => {
-    if(event.target.readyState === 4 && event.target.status === 200) {
-        const data = JSON.parse(event.target.responseText)
-        console.log(data)
-        console.log('All well')
-    } else if (event.target.readyState === 4) {
-        console.log('Done with error')
-    }
-})
-
 startNewGame()
-request.open('GET', 'https://puzzle.mead.io/puzzle?wordCount=1')
-// request.send()
+
+getCountry('EG',(error, countryName) => {
+
+})

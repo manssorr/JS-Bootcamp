@@ -1,7 +1,7 @@
 const req = new XMLHttpRequest()
+const countryCode = 'EG'
+
 let countries = []
-
-
 
 req.addEventListener('readystatechange', e => {
     if(e.target.readyState === 4 && e.target.status === 200) {
@@ -22,4 +22,3 @@ req.addEventListener('readystatechange', e => {
 req.open('GET','https://restcountries.com/v2/all')
 req.send()
 
-const countryCode = 'EG'
