@@ -21,5 +21,14 @@ window.addEventListener('keypress', function(event){
 startNewGame()
 
 getCountry('EG',(error, countryName) => {
-
+    if (countryName) {
+        console.log('------------------------------------');
+        console.log(countryName);
+        console.log('------------------------------------');
+    }
+    else if (error) {
+        console.log('------------------------------------');
+        console.log(`error: ${error}`);
+        console.log('------------------------------------');
+    }
 })
