@@ -20,15 +20,19 @@ window.addEventListener('keypress', function(event){
 
 startNewGame()
 
+getPuzzle("1", (error, puzzle) => {
+    if (puzzle) {
+        console.log(puzzle);
+    } else if (error) {
+        console.log(`Error: ${error}`);
+    }
+})
+
 getCountry('EG',(error, countryName) => {
     if (countryName) {
-        console.log('------------------------------------');
         console.log(countryName);
-        console.log('------------------------------------');
     }
     else if (error) {
-        console.log('------------------------------------');
         console.log(`error: ${error}`);
-        console.log('------------------------------------');
     }
 })
