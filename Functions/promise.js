@@ -15,12 +15,15 @@ getDataCallback((err, data)=>{
 
 
 // Promise
-const myPromise = new Promise ((resolve, reject) => {
+getDataPromise = (data) => new Promise ((resolve, reject) => {
     setTimeout(() => {
-        // resolve('Work')
+        resolve(`My data is: ${data}`)
         reject('didnt work')
     }, 2000);
 })
+
+
+const myPromise = getDataPromise(123)
 
 myPromise.then((data)=>{
     console.log(data)
