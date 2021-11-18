@@ -1,42 +1,30 @@
 'use strict'
 
-// Listener for the API
-
-const getPuzzle = (wordNum) => new Promise((resolve, reject) => {
-    const request = new XMLHttpRequest()
-
-    request.addEventListener('readystatechange', event => {
-        if(event.target.readyState === 4 && event.target.status === 200) {
-            const data = JSON.parse(event.target.responseText)
-            resolve(data.puzzle)
-        } else if (event.target.readyState === 4) {
-            reject('Error has ben happend')
-        }
-    })
-
-    request.open('GET', `https://puzzle.mead.io/puzzle?wordCount=${wordNum}`)
-    request.send()
+// Puzzle the API Setup
+const getPuzzle = (wordNum) => 
+fetch(`https://puzzle.mead.io/puzzle?wordCount=${wordNum}`,{})
+.then((response)=>{
+    if(response.status === 200) {
+        return response.json()
+    } else {
+        throw new Error('Error has ben happend')
+    }
+}).then((dataJSON)=>{
+    return dataJSON.puzzle
+}).catch((error)=>{
+    console.log(error)
 })
 
-
-
-// Countries API
-
-const getCountry = (countryCode) => new Promise((resolve, reject) => {
-    const req = new XMLHttpRequest()
-
-    req.addEventListener('readystatechange', e => {
-        if(e.target.readyState === 4 && e.target.status === 200) {
-
-            countriesJSON = JSON.parse(e.target.responseText)
-            const countryFind = countriesJSON.find(country => country.alpha2Code === countryCode)
-            resolve(countryFind.name)
-
-        } else if (e.target.readyState === 4) {
-            reject('An error has been happened', undefined)
+// Countries API Setup
+const getCountry = (countryCode) => 
+    fetch('https://restcountries.com/v2/all',{}).then((response)=>{
+        if(response.status === 200){
+            return response.json()
+        } else {
+            throw new Error('Error to fetch Countries') 
         }
     })
+    .then((data)=> data.find(country => country.alpha2Code === countryCode))
+    .then((data)=> data.name)
 
-    req.open('GET','https://restcountries.com/v2/all')
-    req.send()
-})
+// Location from IP API Setup
