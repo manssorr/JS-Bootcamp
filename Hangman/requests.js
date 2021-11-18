@@ -1,3 +1,5 @@
+'use strict'
+
 // Listener for the API
 
 const getPuzzle = (wordNum) => new Promise((resolve, reject) => {
