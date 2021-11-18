@@ -15,8 +15,15 @@ const startNewGame = async () => {
 
 // Render the game
 const rander = () => {
-    puzzleEl.textContent = theGame.puzzle
+    puzzleEl.innerHTML = ''
     guessesEl.textContent = theGame.statusMessage
+
+    theGame.puzzle.split('').forEach((letter) => {
+        const letterEl = document.createElement("span")
+        letterEl.textContent = letter
+        puzzleEl.appendChild(letterEl)
+    })
+
 }
 
 // Reset button setup
@@ -29,7 +36,14 @@ window.addEventListener('keypress', function(event){
     rander()
 })
 
+// Generate SPAN Dom
+const generateSpanDOM = async () => {
+    
+}
+
 startNewGame()
+
+generateSpanDOM()
 
 // getPuzzle('2').then((puzzle)=> {
 //     console.log(puzzle)
