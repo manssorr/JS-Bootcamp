@@ -1,30 +1,39 @@
 'use strict'
 
 // Puzzle the API Setup
-const getPuzzle = (wordNum) => 
-fetch(`https://puzzle.mead.io/puzzle?wordCount=${wordNum}`,{})
-.then((response)=>{
+const getPuzzle = async (wordNum) => {
+    const response = await fetch(`https://puzzle.mead.io/puzzle?wordCount=${wordNum}`,{})
     if(response.status === 200) {
-        return response.json()
+        const data = await response.json()
+        return data.puzzle
     } else {
         throw new Error('Error has ben happend')
     }
-}).then((dataJSON)=>{
-    return dataJSON.puzzle
-}).catch((error)=>{
-    console.log(error)
-})
+}
 
 // Countries API Setup
-const getCountry = (countryCode) => 
-    fetch('https://restcountries.com/v2/all',{}).then((response)=>{
-        if(response.status === 200){
-            return response.json()
-        } else {
-            throw new Error('Error to fetch Countries') 
-        }
-    })
-    .then((data)=> data.find(country => country.alpha2Code === countryCode))
-    .then((data)=> data.name)
+const getCountry = async (countryCode) => {
+    const response = await fetch('https://restcountries.com/v2/all',{})
+    if(response.status === 200){
+        const data = await response.json() 
+        return data.find(country => country.alpha2Code === countryCode).name
+    } else {
+        throw new Error('Error to fetch Countries') 
+    }
+}
 
 // Location from IP API Setup
+const getLocation = async () => {
+    const response = await fetch('https://ipinfo.io/?token=2932d1baf8b7c9', {})
+    if(response.status === 200) {
+        return response.json()
+    } else {
+        throw new Error('Cant get your IP')
+    }
+}
+
+// Get current country object with out chaining
+const getCurrentCountry = async () => {
+        const response = await getLocation()
+        return getCountry(response.country)
+}
