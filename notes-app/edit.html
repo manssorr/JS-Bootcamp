@@ -4,23 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/notes-app/styles/styles.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Edit note</title>
 </head>
 <body>
-    Hi! Man Edit what you want
-    <a href="/notes-app/index.html">Back home page</a>
-    <br><br><br>
+    <header class="header">
+        <div class="container">
+            <h1 class="header__title">Notes App</h1>
+            <h2 class="header__subtitle">Take notes and never forget</h2>
+        </div>
+    </header>
+    
+    <div class="actions">
+        <div class="actions__container actions__container--spaced">
+            <a href="/notes-app/index.html">Back Home</a>
+            <span id="last-edited"></span>
+        </div>
+    </div>
+
+    
     <input type="text" id="note-title" placeholder="Enter note title">
-    <br>
-    <span id="last-edit">Hi</span>
-    <br>
     <textarea id="note-body" placeholder="What is running in your mind?"></textarea>
-    <br>
     <button id="remove-note">X Remove this note</button>
 
     <!-- JS Files -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="notes-functions.js"></script>
-    <script src="note-edit.js"></script>
+    <script src="./scripts/notes-functions.js"></script>
+    <script src="./scripts/note-edit.js"></script>
 </body>
 </html>
