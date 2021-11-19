@@ -22,7 +22,8 @@
 ### Note taking - *Local Storage App*
 
 [**Click here to Live Preview**](https://notes-app-mans.surge.sh/)
-<a href="https://notes-app-mans.surge.sh/)" target="_blank">**Click here to Live Preview**</a>
+
+<a href="https://notes-app-mans.surge.sh/" target="_blank">**Click here to Live Preview**</a>
 
 
 
