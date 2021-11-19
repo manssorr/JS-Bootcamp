@@ -4,22 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <title>Todo App</title>
 </head>
 <body>
-    <h1>Hello to Your todo Mansour</h1>
-    <input id="text-task" type="text" placeholder="Tasks Filter">
-    <label>
-        <input type="checkbox" name="hideComplete" id="hide-complete"> Hide Completed Tasks
-    </label>
-    <div id="tasks"></div>
-    <form id="add-todo">
-        <input type="text" placeholder="What do you want to do?" name="todoText">
-        <button name="todoAdd">Add TASK!</button>
-    </form>
+    <header class="header">
+        <div class="container">
+            <h1 class="header__title">To-Do App</h1>
+            <p class="header__subtitle">What you wanna do today?</p>
+        </div>
+    </header>
+
+    <div class="actions">
+        <div class="actions__container">
+            <input id="text-task" class="input" type="text" placeholder="Tasks Filter">
+            <label class="checkbox">
+                <input type="checkbox" name="hideComplete" id="hide-complete"> Hide Completed
+            </label>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="tasks"></div>
+        <form id="new-todo">
+            <input type="text" class="input" placeholder="Somthing to do" name="todoText">
+            <button name="todoAdd" class="button">Add TASK!</button>
+        </form>
+    </div>
+    
     <!-- JS Files -->
     <script src="../uuidv4.js"></script>
-    <script src="todo-functions.js"></script>
-    <script src="todo-app.js"></script>
+    <script src="./scripts/todo-functions.js"></script>
+    <script src="./scripts/todo-app.js"></script>
 </body>
 </html>
