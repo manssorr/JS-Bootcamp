@@ -56,7 +56,6 @@ const generateNoteDOM = (note) => {
 // sorted by setup
 const sortNotes = (notes, sortBy) => {
     if (sortBy === 'byEdited') {
-        console.log(sortBy)
         return notes.sort((a, b) => {
             if (a.updatedAt > b.updatedAt) {
             return -1
@@ -67,7 +66,6 @@ const sortNotes = (notes, sortBy) => {
             }
         })
     } else if (sortBy === 'byCreated') {
-        console.log(sortBy)
         return notes.sort((a, b) => {
             if (a.createdAt > b.createdAt) {
                 return -1
@@ -78,7 +76,6 @@ const sortNotes = (notes, sortBy) => {
             }
         })
     } else if (sortBy === 'alphabetical') {
-        console.log(sortBy)
         return notes.sort((a, b) => {
             if (a.title.toLowerCase() < b.title.toLowerCase()) {
             return -1
