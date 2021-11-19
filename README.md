@@ -21,19 +21,19 @@
 
 ### Note taking - *Local Storage App*
 
-[**Click here to Live Preview**](https://notes-app-mans.surge.sh/)
+[**Click here to Live Preview**](https://notes-app-mans.surge.sh/){:target="_blank" rel="noopener"}
 
 ![Notes-screenshot](https://user-images.githubusercontent.com/19681362/142573088-fa5c8e8a-c3d3-48a3-a735-7dd40d3f1c77.png)
 
 ### To-do list - *Local Storage App*
 
-[**Click here to Live Preview**](https://todos-app-mans.surge.sh/)
+[**Click here to Live Preview**](https://todos-app-mans.surge.sh/){:target="_blank" rel="noopener"}
 
 ![Todo-screenshot](https://user-images.githubusercontent.com/19681362/142573091-b3cc48b7-508b-44b6-8aa4-bd7ca77ffa16.png)
 
 ### Hangman Game - *with API to generate words*
 
-[**Click here to Live Preview**](https://hangman-game-mans.surge.sh/)
+[**Click here to Live Preview**](https://hangman-game-mans.surge.sh/){:target="_blank" rel="noopener"}
 
 ![Hangman-screenshot](https://user-images.githubusercontent.com/19681362/142573086-fad92b3e-461d-4a91-8b9d-4f3a2597c0c6.png)
 
