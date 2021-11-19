@@ -2,9 +2,9 @@
 
 # JS-Bootcamp by Andrew mead
 
-[Go to  Important topics in this course](https://notes-app-mans.surge.sh/)
+[Go to  Important topics in this course](#important-topics-in-this-course)
 
-[Go to Live-Preview for Projects in this course](https://notes-app-mans.surge.sh/)
+[Go to Live-Preview for Projects in this course](#Live-Preview-for-Projects-in-this-course)
 
 ## Important topics in this course
 
