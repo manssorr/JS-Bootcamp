@@ -5,7 +5,7 @@ const bodyElement  = document.querySelector('#note-body')
 const removeBTN    = document.querySelector('#remove-note')
 const noteId       = location.hash.substring(1)
 const lastEditText = document.querySelector('#last-edited');
-const backHome     = () => {location.assign('/notes-app/index.html')}
+const backHome     = () => {location.assign('./notes-app/index.html')}
 const updateDate   = (note) => {note.updatedAt = timpstamp}
 
 let notes         = getSavedNotes()

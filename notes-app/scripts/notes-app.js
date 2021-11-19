@@ -21,7 +21,7 @@ document.querySelector('#create-note').addEventListener('click', () => {
         updatedAt: timpstamp
     })
     saveNotes(notes)
-    location.assign(`/notes-app/edit.html#${id}`)
+    location.assign(`./notes-app/edit.html#${id}`)
 })
 
 // Filtered by text Call
